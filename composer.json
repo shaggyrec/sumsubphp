@@ -1,0 +1,26 @@
+{
+    "name": "shaggyrec/sumsubphp",
+    "description": "Php client for SumSub",
+    "type": "library",
+    "license": "UNLICENSED",
+    "autoload": {
+        "psr-4": {
+            "Shaggyrec\\Sumsubphp\\": ["src"]
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexander Shogenov",
+            "email": "i@shagg.ru"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "guzzlehttp/psr7": "^2.4",
+        "psr/http-client": "^1.0",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}

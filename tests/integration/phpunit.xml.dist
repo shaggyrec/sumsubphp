@@ -1,0 +1,18 @@
+<phpunit bootstrap="./../../vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="true"
+         stopOnFailure="true"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+>
+
+    <php>
+        <const name="INTEGRATION_TESTS_IN_PROGRESS" value=""/>
+        <env name="TOKEN" value=""/>
+        <env name="KEY" value="" />
+    </php>
+</phpunit>
