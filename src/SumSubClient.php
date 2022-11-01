@@ -100,7 +100,8 @@ class SumSubClient
         string $phone,
         string $email,
         ?FixedInfo $fixedInfo = null,
-        ?string $levelName = null
+        ?string $levelName = null,
+        ?string $sourceKey = null,
     ): CreateApplicantResponse {
         return new CreateApplicantResponse(
             $this->sendRequest(
@@ -114,6 +115,7 @@ class SumSubClient
                     ],
                     $fixedInfo !== null ? $fixedInfo->toArray() : [],
                     $levelName ? ['ttlInSecs' => $levelName] : [],
+                    $sourceKey ? ['sourceKey' => $sourceKey] : [],
                 ),
             ),
         );
