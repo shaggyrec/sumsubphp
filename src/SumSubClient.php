@@ -18,7 +18,6 @@ use Shaggyrec\Sumsubphp\DTO\RequiredIdDocs;
 use Shaggyrec\Sumsubphp\DTO\RiskLevel;
 use Shaggyrec\Sumsubphp\Exception\ClientResponseException;
 use Shaggyrec\Sumsubphp\DTO\AccessToken;
-use Shaggyrec\Sumsubphp\DTO\CreateApplicantResponse;
 use Shaggyrec\Sumsubphp\Exception\IncorrectParamsException;
 
 class SumSubClient
@@ -93,7 +92,7 @@ class SumSubClient
      * @param string|null $levelName
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
-     * @return CreateApplicantResponse
+     * @return Applicant
      */
     public function createApplicant(
         string $externalUserId,
@@ -102,8 +101,8 @@ class SumSubClient
         ?FixedInfo $fixedInfo = null,
         ?string $levelName = null,
         ?string $sourceKey = null,
-    ): CreateApplicantResponse {
-        return new CreateApplicantResponse(
+    ): Applicant {
+        return new Applicant(
             $this->sendRequest(
                 '/resources/applicants',
                 self::HTTP_METHOD_POST,
@@ -126,11 +125,11 @@ class SumSubClient
      * @param string $levelName
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
-     * @return CreateApplicantResponse
+     * @return Applicant
      */
-    public function changeLevel(string $applicantId, string $levelName): CreateApplicantResponse
+    public function changeLevel(string $applicantId, string $levelName): Applicant
     {
-        return new CreateApplicantResponse(
+        return new Applicant(
             $this->sendRequest(
                 sprintf('/resources/applicants/%s/moveToLevel?name=%s', $applicantId, $levelName),
                 self::HTTP_METHOD_POST,
@@ -177,11 +176,11 @@ class SumSubClient
      * @param string $applicantId
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
-     * @return CreateApplicantResponse
+     * @return Applicant
      */
-    public function getApplicantById(string $applicantId): CreateApplicantResponse
+    public function getApplicantById(string $applicantId): Applicant
     {
-        return new CreateApplicantResponse(
+        return new Applicant(
             $this->sendRequest(
                 sprintf(
                     '/resources/applicants/%s/one',
@@ -195,11 +194,11 @@ class SumSubClient
      * @param string $externalUserId
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
-     * @return CreateApplicantResponse
+     * @return Applicant
      */
-    public function getApplicantByExternalUserId(string $externalUserId): CreateApplicantResponse
+    public function getApplicantByExternalUserId(string $externalUserId): Applicant
     {
-        return new CreateApplicantResponse(
+        return new Applicant(
             $this->sendRequest(
                 sprintf(
                     '/resources/applicants/-;externalUserId=%s/one',

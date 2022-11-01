@@ -9,6 +9,7 @@ class Applicant extends AbstractDTO
     public string $externalUserId;
     public string $inspectionId;
     public array $fixedInfo;
+    public array $info;
     public string $email;
     public string $phone;
     public RequiredIdDocs $requiredIdDocs;
@@ -23,6 +24,8 @@ class Applicant extends AbstractDTO
      */
     public array $questionnaires;
 
+    public string $applicantPlatform;
+
     public function __construct(array $sumSubData)
     {
         $this->id = $sumSubData['id'];
@@ -30,11 +33,13 @@ class Applicant extends AbstractDTO
         $this->externalUserId = $sumSubData['externalUserId'];
         $this->inspectionId = $sumSubData['inspectionId'];
         $this->fixedInfo = $sumSubData['fixedInfo'];
+        $this->info = $sumSubData['info'];
         $this->email = $sumSubData['email'];
         $this->phone = $sumSubData['phone'];
         $this->type = $sumSubData['type'];
         $this->requiredIdDocs = new RequiredIdDocs($sumSubData['requiredIdDocs']);
         $this->review = new ReviewResponse($sumSubData['review']);
+        $this->applicantPlatform = $sumSubData['applicantPlatform'];
         $this->sourceKey = $sumSubData['sourceKey'];
         $this->lang = $sumSubData['lang'];
         $this->metadata = $sumSubData['metadata'];
