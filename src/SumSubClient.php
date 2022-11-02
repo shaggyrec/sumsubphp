@@ -90,6 +90,7 @@ class SumSubClient
      * @param string $email
      * @param FixedInfo|null $fixedInfo
      * @param string|null $levelName
+     * @param string|null $sourceKey
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
      * @return Applicant
@@ -100,7 +101,7 @@ class SumSubClient
         string $email,
         ?FixedInfo $fixedInfo = null,
         ?string $levelName = null,
-        ?string $sourceKey = null,
+        ?string $sourceKey = null
     ): Applicant {
         return new Applicant(
             $this->sendRequest(
