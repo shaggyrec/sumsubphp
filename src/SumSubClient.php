@@ -464,21 +464,25 @@ class SumSubClient
      */
     public function testDigest(string $secretKey, $payload): string
     {
-        return json_decode(
-            $this->client->sendRequest(
-                $this->requestSigner->sign(
-                    new Request(
-                        self::HTTP_METHOD_POST,
-                        $this->buildUrl(
-                            '/resources/inspectionCallbacks/testDigest',
-                            ['secretKey' => $secretKey],
-                        ),
-                        [],
-                        $payload,
-                    )
-                ),
-            )->getBody()->getContents(),
-        )->digest;
+        $r = $this->client->sendRequest(
+            $this->requestSigner->sign(
+                new Request(
+                    self::HTTP_METHOD_POST,
+                    $this->buildUrl(
+                        '/resources/inspectionCallbacks/testDigest',
+                        ['secretKey' => $secretKey],
+                    ),
+                    [],
+                    $payload,
+                )
+            ),
+        );
+
+        if ($r->getStatusCode() > 399) {
+            throw new ClientResponseException($r['description']);
+        }
+
+        return json_decode($r->getBody()->getContents())->digest;
     }
 
     /**
