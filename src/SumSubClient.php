@@ -478,11 +478,12 @@ class SumSubClient
             ),
         );
 
+        $responseBody = json_decode($r->getBody()->getContents());
         if ($r->getStatusCode() > 399) {
-            throw new ClientResponseException($r['description']);
+            throw new ClientResponseException($responseBody->description);
         }
 
-        return json_decode($r->getBody()->getContents())->digest;
+        return $responseBody->digest;
     }
 
     /**
