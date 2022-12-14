@@ -59,24 +59,23 @@ class SumSubClient
     /**
      * @param string $userId
      * @param string $levelName
-     * @param int|null $ttlInSecs
-     * @throws ClientResponseException|ClientExceptionInterface
+     * @param int $ttlInSecs
+     * @throws ClientExceptionInterface
+     * @throws ClientResponseException
      * @return AccessToken
      */
-    public function getAccessToken(string $userId, string $levelName, ?int $ttlInSecs = null): AccessToken
+    public function getAccessToken(string $userId, string $levelName, int $ttlInSecs = 600): AccessToken
     {
         return new AccessToken(
             $this->sendRequest(
                 sprintf(
                     '/resources/accessTokens?%s',
                     http_build_query(
-                        array_merge(
-                            [
-                                'userId' => $userId,
-                                'levelName' => $levelName,
-                            ],
-                            $ttlInSecs ? ['ttlInSecs' => $ttlInSecs] : [],
-                        )
+                        [
+                            'userId' => $userId,
+                            'levelName' => $levelName,
+                            'ttlInSecs' => $ttlInSecs,
+                        ],
                     ),
                 ),
                 self::HTTP_METHOD_POST,
