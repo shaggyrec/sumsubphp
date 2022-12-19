@@ -2,6 +2,7 @@
     "name": "shaggyrec/sumsubphp",
     "description": "Php client for SumSub",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Shaggyrec\\Sumsubphp\\": ["src"]
