@@ -491,7 +491,6 @@ class SumSubClient
      * @param array $params
      * @throws ClientExceptionInterface
      * @throws ClientResponseException
-     * @return mixed
      */
     private function sendRequest(
         string $path,
